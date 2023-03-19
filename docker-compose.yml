@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  postgres-flask:
+    env_file:
+      - .env
+    image: "postgres:13.6"
+    container_name: flask-db-pqsql
+    ports:
+      - "5442:5442"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PWD}
+      - POSTGRES_DB=${DB_NAME}
+    restart: always
+    networks:
+      - default
+
